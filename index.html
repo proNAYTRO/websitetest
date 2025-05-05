@@ -6,13 +6,9 @@
   <title>Naytro Nexus - Discord Server Tiers</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
-    /* Reset and Base Styles */
     *, *::before, *::after {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     html {
@@ -20,50 +16,16 @@
     }
 
     body {
+      margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: #000;
+      background: linear-gradient(to right, #0f0f0f, #1c1c1c);
       color: #fff;
       padding-top: 90px;
-      overflow-x: hidden;
     }
 
-    /* Parallax Background Layers */
-    .parallax-layer {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-repeat: repeat;
-      background-size: cover;
-      z-index: -1;
-      animation: moveBackground 200s linear infinite;
-    }
-
-    .parallax-layer.layer1 {
-      background-image: url('https://example.com/stars-layer1.png');
-      animation-duration: 200s;
-    }
-
-    .parallax-layer.layer2 {
-      background-image: url('https://example.com/stars-layer2.png');
-      animation-duration: 150s;
-    }
-
-    .parallax-layer.layer3 {
-      background-image: url('https://example.com/stars-layer3.png');
-      animation-duration: 100s;
-    }
-
-    @keyframes moveBackground {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-1000px); }
-    }
-
-    /* Header Styles */
     header {
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(10px);
+      background: rgba(20, 20, 20, 0.6);
+      backdrop-filter: blur(15px);
       position: fixed;
       top: 0;
       width: 100%;
@@ -71,7 +33,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 24px;
+      padding: 14px 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .site-logo {
@@ -79,20 +42,18 @@
     }
 
     .menu-toggle {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       color: #fff;
-      background-color: rgba(255, 255, 255, 0.1);
+      background: none;
       border: none;
       cursor: pointer;
-      padding: 8px 10px;
-      border-radius: 4px;
       display: none;
       z-index: 1002;
     }
 
     nav {
       display: flex;
-      gap: 24px;
+      gap: 28px;
     }
 
     .nav-links {
@@ -102,23 +63,23 @@
     }
 
     .nav-links a {
-      color: #fff;
+      color: #ddd;
       text-decoration: none;
       font-weight: 600;
       font-size: 1rem;
       display: flex;
       align-items: center;
       gap: 8px;
-      transition: color 0.2s ease;
+      transition: all 0.3s ease;
     }
 
     .nav-links a i {
       font-size: 1rem;
-      vertical-align: middle;
     }
 
     .nav-links a:hover {
-      color: #f00;
+      color: #76c7ff;
+      transform: translateY(-1px);
     }
 
     @media (max-width: 768px) {
@@ -131,10 +92,10 @@
         top: 70px;
         left: 0;
         width: 100%;
-        background-color: rgba(0, 0, 0, 0.95);
+        background: rgba(10, 10, 10, 0.95);
         flex-direction: column;
         align-items: center;
-        gap: 16px;
+        gap: 20px;
         padding: 20px 0;
         display: none;
       }
@@ -146,110 +107,103 @@
       .nav-links {
         flex-direction: column;
       }
-
-      .nav-links a {
-        font-size: 0.95rem;
-      }
-
-      .nav-links a i {
-        font-size: 1rem;
-        margin-right: 6px;
-      }
     }
 
-    /* Main Content Styles */
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       text-align: center;
       margin: 40px 0 10px;
+      font-weight: 800;
     }
 
     p.description {
       text-align: center;
-      max-width: 600px;
+      max-width: 640px;
       margin: 0 auto 40px;
       color: #aaa;
     }
 
     .pathway-section {
-      max-width: 900px;
+      max-width: 960px;
       margin: 60px auto;
-      padding: 0 20px;
+      padding: 0 24px;
       text-align: center;
     }
 
     .pathway-title {
-      font-size: 2.2rem;
-      margin-bottom: 40px;
-      color: #f00;
+      font-size: 2.4rem;
+      margin-bottom: 48px;
+      background: linear-gradient(90deg, #76c7ff, #b26bff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .pathway-steps {
       display: flex;
       flex-direction: column;
-      gap: 30px;
+      gap: 32px;
     }
 
     .step {
       display: flex;
       align-items: flex-start;
       gap: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 16px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
       text-align: left;
-      cursor: pointer;
-      transition: transform 0.2s ease;
       text-decoration: none;
       color: inherit;
     }
 
-    .step * {
-      text-decoration: none !important;
-      color: inherit !important;
-    }
-
     .step:hover {
-      transform: translateY(-3px);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
 
     .step-number {
-      font-size: 1.5rem;
-      background-color: #f00;
+      font-size: 1.6rem;
+      background: linear-gradient(145deg, #76c7ff, #b26bff);
       color: #fff;
       border-radius: 50%;
-      width: 40px;
-      height: 40px;
+      width: 48px;
+      height: 48px;
       display: grid;
       place-items: center;
-      font-weight: bold;
-      transition: box-shadow 0.3s ease;
-    }
-
-    .step:hover .step-number {
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+      flex-shrink: 0;
+      box-shadow: 0 0 10px rgba(118, 199, 255, 0.5);
     }
 
     .step-content h3 {
-      margin: 0 0 5px;
-      font-size: 1.3rem;
+      margin: 0 0 6px;
+      font-size: 1.35rem;
+      font-weight: 600;
     }
 
     .step-content p {
       margin: 0;
-      color: #aaa;
+      color: #bbb;
+      font-size: 0.95rem;
     }
 
     .pathway-button {
-      margin-top: 40px;
+      margin-top: 48px;
       display: inline-block;
-      background-color: #f00;
+      background: linear-gradient(135deg, #76c7ff, #b26bff);
       color: #fff;
-      padding: 12px 24px;
+      padding: 14px 28px;
       font-size: 1rem;
-      border-radius: 8px;
+      font-weight: 600;
+      border-radius: 12px;
       text-decoration: none;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
 
     .pathway-button:hover {
-      background-color: #c00;
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, #60b8f0, #a65cf1);
     }
 
     @media (max-width: 600px) {
@@ -260,40 +214,21 @@
       }
 
       .step-number {
-        margin-bottom: 10px;
-        animation: mobilePulse 1.8s infinite;
+        margin-bottom: 12px;
       }
 
       h1 {
-        font-size: 2rem;
+        font-size: 2.1rem;
       }
 
       .pathway-title {
-        font-size: 1.8rem;
-      }
-    }
-
-    @keyframes mobilePulse {
-      0% {
-        box-shadow: 0 0 0px rgba(255, 255, 255, 0.3);
-      }
-      50% {
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
-      }
-      100% {
-        box-shadow: 0 0 0px rgba(255, 255, 255, 0.3);
+        font-size: 1.9rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Parallax Background Layers -->
-  <div class="parallax-layer layer1"></div>
-  <div class="parallax-layer layer2"></div>
-  <div class="parallax-layer layer3"></div>
-
-  <!-- Header -->
   <header>
     <img src="naytro_nexus.png" alt="Naytro Nexus Logo" class="site-logo">
     <button class="menu-toggle" onclick="toggleMenu()" id="menuIcon">☰</button>
@@ -308,7 +243,6 @@
     </nav>
   </header>
 
-  <!-- Main Content -->
   <h1>Naytro Nexus Discord Services</h1>
   <p class="description">
     Professionally designed and automated Discord servers for communities, creators, and businesses.
@@ -317,13 +251,46 @@
   <section class="pathway-section">
     <h2 class="pathway-title">How It Works</h2>
     <div class="pathway-steps">
-      <a href="discord.html" class="step" data-aos="fade-up">
+      <a href="discord.html" class="step">
         <div class="step-number"><i class="fas fa-user-plus"></i></div>
         <div class="step-content">
           <h3>Join the Discord</h3>
           <p>Click the button below to join our community server and explore the channels.</p>
         </div>
       </a>
-      <a href="tier.html" class="step" data-aos="fade-up"
-::contentReference[oaicite:17]{index=17}
- 
+      <a href="tier.html" class="step">
+        <div class="step-number"><i class="fas fa-cogs"></i></div>
+        <div class="step-content">
+          <h3>Choose a Tier</h3>
+          <p>Explore our packages and pick the one that fits your needs—Starter, Pro, or Ultimate.</p>
+        </div>
+      </a>
+      <a href="message.html" class="step">
+        <div class="step-number"><i class="fas fa-comment-dots"></i></div>
+        <div class="step-content">
+          <h3>Message Us</h3>
+          <p>Send us a message on Discord to place your order and handle payment securely.</p>
+        </div>
+      </a>
+      <a href="server.html" class="step">
+        <div class="step-number"><i class="fas fa-server"></i></div>
+        <div class="step-content">
+          <h3>Get Your Server</h3>
+          <p>We build and deliver your server based on your selected package and preferences.</p>
+        </div>
+      </a>
+    </div>
+    <a href="https://discord.gg/YNAJz2KCE6" class="button pathway-button">Join Our Discord</a>
+  </section>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("navbar");
+      const icon = document.getElementById("menuIcon");
+      nav.classList.toggle("open");
+      icon.textContent = nav.classList.contains("open") ? "×" : "☰";
+    }
+  </script>
+
+</body>
+</html>
