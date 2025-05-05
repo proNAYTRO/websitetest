@@ -6,9 +6,13 @@
   <title>Naytro Nexus - Discord Server Tiers</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
+    /* Reset and Base Styles */
     *, *::before, *::after {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     html {
@@ -16,21 +20,47 @@
     }
 
     body {
-      margin: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(120deg, #0f0f0f, #1a1a1a, #000000);
-      background-size: 600% 600%;
-      animation: gradientParallax 30s ease infinite;
+      background-color: #000;
       color: #fff;
       padding-top: 90px;
+      overflow-x: hidden;
     }
 
-    @keyframes gradientParallax {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* Parallax Background Layers */
+    .parallax-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-repeat: repeat;
+      background-size: cover;
+      z-index: -1;
+      animation: moveBackground 200s linear infinite;
     }
 
+    .parallax-layer.layer1 {
+      background-image: url('https://example.com/stars-layer1.png');
+      animation-duration: 200s;
+    }
+
+    .parallax-layer.layer2 {
+      background-image: url('https://example.com/stars-layer2.png');
+      animation-duration: 150s;
+    }
+
+    .parallax-layer.layer3 {
+      background-image: url('https://example.com/stars-layer3.png');
+      animation-duration: 100s;
+    }
+
+    @keyframes moveBackground {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-1000px); }
+    }
+
+    /* Header Styles */
     header {
       background: rgba(0, 0, 0, 0.7);
       backdrop-filter: blur(10px);
@@ -82,6 +112,11 @@
       transition: color 0.2s ease;
     }
 
+    .nav-links a i {
+      font-size: 1rem;
+      vertical-align: middle;
+    }
+
     .nav-links a:hover {
       color: #f00;
     }
@@ -115,8 +150,14 @@
       .nav-links a {
         font-size: 0.95rem;
       }
+
+      .nav-links a i {
+        font-size: 1rem;
+        margin-right: 6px;
+      }
     }
 
+    /* Main Content Styles */
     h1 {
       font-size: 2.5rem;
       text-align: center;
@@ -155,16 +196,18 @@
       gap: 20px;
       text-align: left;
       cursor: pointer;
+      transition: transform 0.2s ease;
       text-decoration: none;
       color: inherit;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
-    .step.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .step * {
+      text-decoration: none !important;
+      color: inherit !important;
+    }
+
+    .step:hover {
+      transform: translateY(-3px);
     }
 
     .step-number {
@@ -203,7 +246,6 @@
       font-size: 1rem;
       border-radius: 8px;
       text-decoration: none;
-      transition: background-color 0.3s ease;
     }
 
     .pathway-button:hover {
@@ -232,14 +274,26 @@
     }
 
     @keyframes mobilePulse {
-      0% { box-shadow: 0 0 0px rgba(255, 255, 255, 0.3); }
-      50% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.9); }
-      100% { box-shadow: 0 0 0px rgba(255, 255, 255, 0.3); }
+      0% {
+        box-shadow: 0 0 0px rgba(255, 255, 255, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+      }
+      100% {
+        box-shadow: 0 0 0px rgba(255, 255, 255, 0.3);
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- Parallax Background Layers -->
+  <div class="parallax-layer layer1"></div>
+  <div class="parallax-layer layer2"></div>
+  <div class="parallax-layer layer3"></div>
+
+  <!-- Header -->
   <header>
     <img src="naytro_nexus.png" alt="Naytro Nexus Logo" class="site-logo">
     <button class="menu-toggle" onclick="toggleMenu()" id="menuIcon">☰</button>
@@ -254,6 +308,7 @@
     </nav>
   </header>
 
+  <!-- Main Content -->
   <h1>Naytro Nexus Discord Services</h1>
   <p class="description">
     Professionally designed and automated Discord servers for communities, creators, and businesses.
@@ -262,70 +317,13 @@
   <section class="pathway-section">
     <h2 class="pathway-title">How It Works</h2>
     <div class="pathway-steps">
-      <a href="discord.html" class="step">
+      <a href="discord.html" class="step" data-aos="fade-up">
         <div class="step-number"><i class="fas fa-user-plus"></i></div>
         <div class="step-content">
           <h3>Join the Discord</h3>
           <p>Click the button below to join our community server and explore the channels.</p>
         </div>
       </a>
-      <a href="tier.html" class="step">
-        <div class="step-number"><i class="fas fa-cogs"></i></div>
-        <div class="step-content">
-          <h3>Choose a Tier</h3>
-          <p>Explore our packages and pick the one that fits your needs—Starter, Pro, or Ultimate.</p>
-        </div>
-      </a>
-      <a href="message.html" class="step">
-        <div class="step-number"><i class="fas fa-comment-dots"></i></div>
-        <div class="step-content">
-          <h3>Message Us</h3>
-          <p>Send us a message on Discord to place your order and handle payment securely.</p>
-        </div>
-      </a>
-      <a href="server.html" class="step">
-        <div class="step-number"><i class="fas fa-server"></i></div>
-        <div class="step-content">
-          <h3>Get Your Server</h3>
-          <p>We build and deliver your server based on your selected package and preferences.</p>
-        </div>
-      </a>
-    </div>
-    <a href="https://discord.gg/YNAJz2KCE6" class="button pathway-button">Join Our Discord</a>
-  </section>
-
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById("navbar");
-      const icon = document.getElementById("menuIcon");
-      nav.classList.toggle("open");
-      icon.textContent = nav.classList.contains("open") ? "×" : "☰";
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-      const steps = document.querySelectorAll('.step');
-      const isMobile = window.innerWidth < 768;
-
-      if (isMobile) {
-        const observer = new IntersectionObserver((entries, observer) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.2 });
-
-        steps.forEach(step => observer.observe(step));
-      } else {
-        steps.forEach((step, index) => {
-          setTimeout(() => {
-            step.classList.add('visible');
-          }, index * 250);
-        });
-      }
-    });
-  </script>
-
-</body>
-</html>
+      <a href="tier.html" class="step" data-aos="fade-up"
+::contentReference[oaicite:17]{index=17}
+ 
