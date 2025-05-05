@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Naytro Nexus - Discord Server Tiers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+      color: #fff;
+      padding-top: 90px;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1001;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      background: rgba(20, 20, 20, 0.75);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .site-logo {
+      height: 50px;
+      filter: drop-shadow(0 0 2px #f00);
+    }
+
+    .menu-toggle {
+      font-size: 1.5rem;
+      color: #fff;
+      background: none;
+      border: 2px solid #444;
+      border-radius: 8px;
+      padding: 6px 12px;
+      cursor: pointer;
+      display: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: #eee;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(255, 0, 0, 0.15);
+      color: #f00;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(10, 10, 10, 0.95);
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding: 20px 0;
+        display: none;
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      .nav-links {
+        flex-direction: column;
+      }
+    }
+
+    h1 {
+      font-size: 3rem;
+      text-align: center;
+      margin: 60px 0 20px;
+      color: #f5f5f5;
+      letter-spacing: -1px;
+    }
+
+    p.description {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 60px;
+      color: #aaa;
+      font-size: 1.1rem;
+    }
+
+    .pathway-section {
+      max-width: 1000px;
+      margin: 0 auto 100px;
+      padding: 0 20px;
+    }
+
+    .pathway-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 50px;
+      color: #ff4444;
+    }
+
+    .pathway-steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+    }
+
+    .step:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 24px rgba(255, 0, 0, 0.2);
+    }
+
+    .step-number {
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #ff4444, #cc0000);
+      color: #fff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .step-content h3 {
+      margin: 0 0 6px;
+      font-size: 1.4rem;
+    }
+
+    .step-content p {
+      margin: 0;
+      color: #bbb;
+    }
+
+    .pathway-button {
+      display: block;
+      width: fit-content;
+      margin: 50px auto 0;
+      background: linear-gradient(135deg, #ff0000, #cc0000);
+      color: #fff;
+      padding: 14px 32px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .pathway-button:hover {
+      background: linear-gradient(135deg, #cc0000, #a00000);
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .pathway-title {
+        font-size: 1.8rem;
+      }
+
+      .step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .step-number {
+        margin-bottom: 12px;
+        animation: pulse 1.6s infinite;
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.6);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(255, 0, 0, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="naytro_nexus.png" alt="Naytro Nexus Logo" class="site-logo">
+    <button class="menu-toggle" onclick="toggleMenu()" id="menuIcon">☰</button>
+    <nav id="navbar">
+      <div class="nav-links">
+        <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+        <a href="join.html"><i class="fas fa-sign-in-alt"></i> Join Us</a>
+        <a href="samples.html"><i class="fas fa-images"></i> Samples</a>
+        <a href="reviews.html"><i class="fas fa-star"></i> Reviews</a>
+        <a href="socials.html"><i class="fas fa-share-alt"></i> Socials</a>
+      </div>
+    </nav>
+  </header>
+
+  <h1>Naytro Nexus Discord Services</h1>
+  <p class="description">
+    Professionally designed and automated Discord servers for communities, creators, and businesses.
+  </p>
+
+  <section class="pathway-section">
+    <h2 class="pathway-title">How It Works</h2>
+    <div class="pathway-steps">
+      <a href="discord.html" class="step">
+        <div class="step-number"><i class="fas fa-user-plus"></i></div>
+        <div class="step-content">
+          <h3>Join the Discord</h3>
+          <p>Click the button below to join our community server and explore the channels.</p>
+        </div>
+      </a>
+      <a href="tier.html" class="step">
+        <div class="step-number"><i class="fas fa-cogs"></i></div>
+        <div class="step-content">
+          <h3>Choose a Tier</h3>
+          <p>Explore our packages and pick the one that fits your needs—Starter, Pro, or Ultimate.</p>
+        </div>
+      </a>
+      <a href="message.html" class="step">
+        <div class="step-number"><i class="fas fa-comment-dots"></i></div>
+        <div class="step-content">
+          <h3>Message Us</h3>
+          <p>Send us a message on Discord to place your order and handle payment securely.</p>
+        </div>
+      </a>
+      <a href="server.html" class="step">
+        <div class="step-number"><i class="fas fa-server"></i></div>
+        <div class="step-content">
+          <h3>Get Your Server</h3>
+          <p>We build and deliver your server based on your selected package and preferences.</p>
+        </div>
+      </a>
+    </div>
+    <a href="https://discord.gg/YNAJz2KCE6" class="button pathway-button">Join Our Discord</a>
+  </section>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("navbar");
+      const icon = document.getElementById("menuIcon");
+      nav.classList.toggle("open");
+      icon.textContent = nav.classList.contains("open") ? "×" : "☰";
+    }
+  </script>
+
+</body>
+</html>
