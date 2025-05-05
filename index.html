@@ -18,12 +18,22 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+      background: linear-gradient(120deg, #0f0f0f, #1a1a1a, #000000);
+      background-size: 600% 600%;
+      animation: gradientParallax 30s ease infinite;
       color: #fff;
       padding-top: 90px;
     }
 
+    @keyframes gradientParallax {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     header {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
       position: fixed;
       top: 0;
       width: 100%;
@@ -32,30 +42,27 @@
       justify-content: space-between;
       align-items: center;
       padding: 12px 24px;
-      background: rgba(20, 20, 20, 0.75);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .site-logo {
       height: 50px;
-      filter: drop-shadow(0 0 2px #f00);
     }
 
     .menu-toggle {
       font-size: 1.5rem;
       color: #fff;
-      background: none;
-      border: 2px solid #444;
-      border-radius: 8px;
-      padding: 6px 12px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: none;
       cursor: pointer;
+      padding: 8px 10px;
+      border-radius: 4px;
       display: none;
+      z-index: 1002;
     }
 
     nav {
       display: flex;
-      gap: 32px;
+      gap: 24px;
     }
 
     .nav-links {
@@ -65,17 +72,17 @@
     }
 
     .nav-links a {
-      color: #eee;
+      color: #fff;
       text-decoration: none;
       font-weight: 600;
       font-size: 1rem;
-      padding: 6px 10px;
-      border-radius: 6px;
-      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s ease;
     }
 
     .nav-links a:hover {
-      background-color: rgba(255, 0, 0, 0.15);
       color: #f00;
     }
 
@@ -89,7 +96,7 @@
         top: 70px;
         left: 0;
         width: 100%;
-        background-color: rgba(10, 10, 10, 0.95);
+        background-color: rgba(0, 0, 0, 0.95);
         flex-direction: column;
         align-items: center;
         gap: 16px;
@@ -104,110 +111,106 @@
       .nav-links {
         flex-direction: column;
       }
+
+      .nav-links a {
+        font-size: 0.95rem;
+      }
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       text-align: center;
-      margin: 60px 0 20px;
-      color: #f5f5f5;
-      letter-spacing: -1px;
+      margin: 40px 0 10px;
     }
 
     p.description {
       text-align: center;
-      max-width: 700px;
-      margin: 0 auto 60px;
+      max-width: 600px;
+      margin: 0 auto 40px;
       color: #aaa;
-      font-size: 1.1rem;
     }
 
     .pathway-section {
-      max-width: 1000px;
-      margin: 0 auto 100px;
+      max-width: 900px;
+      margin: 60px auto;
       padding: 0 20px;
+      text-align: center;
     }
 
     .pathway-title {
-      font-size: 2.5rem;
-      text-align: center;
-      margin-bottom: 50px;
-      color: #ff4444;
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      color: #f00;
     }
 
     .pathway-steps {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
     }
 
     .step {
       display: flex;
-      align-items: center;
-      gap: 24px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 16px;
-      padding: 20px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      align-items: flex-start;
+      gap: 20px;
+      text-align: left;
+      cursor: pointer;
       text-decoration: none;
+      color: inherit;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
-    .step:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 24px rgba(255, 0, 0, 0.2);
+    .step.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .step-number {
       font-size: 1.5rem;
-      background: linear-gradient(135deg, #ff4444, #cc0000);
+      background-color: #f00;
       color: #fff;
       border-radius: 50%;
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       display: grid;
       place-items: center;
       font-weight: bold;
-      flex-shrink: 0;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .step:hover .step-number {
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
     }
 
     .step-content h3 {
-      margin: 0 0 6px;
-      font-size: 1.4rem;
+      margin: 0 0 5px;
+      font-size: 1.3rem;
     }
 
     .step-content p {
       margin: 0;
-      color: #bbb;
+      color: #aaa;
     }
 
     .pathway-button {
-      display: block;
-      width: fit-content;
-      margin: 50px auto 0;
-      background: linear-gradient(135deg, #ff0000, #cc0000);
+      margin-top: 40px;
+      display: inline-block;
+      background-color: #f00;
       color: #fff;
-      padding: 14px 32px;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 12px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 8px;
       text-decoration: none;
-      transition: background 0.3s ease;
+      transition: background-color 0.3s ease;
     }
 
     .pathway-button:hover {
-      background: linear-gradient(135deg, #cc0000, #a00000);
+      background-color: #c00;
     }
 
     @media (max-width: 600px) {
-      h1 {
-        font-size: 2rem;
-      }
-
-      .pathway-title {
-        font-size: 1.8rem;
-      }
-
       .step {
         flex-direction: column;
         align-items: center;
@@ -215,21 +218,23 @@
       }
 
       .step-number {
-        margin-bottom: 12px;
-        animation: pulse 1.6s infinite;
+        margin-bottom: 10px;
+        animation: mobilePulse 1.8s infinite;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .pathway-title {
+        font-size: 1.8rem;
       }
     }
 
-    @keyframes pulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.6);
-      }
-      70% {
-        box-shadow: 0 0 0 10px rgba(255, 0, 0, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
-      }
+    @keyframes mobilePulse {
+      0% { box-shadow: 0 0 0px rgba(255, 255, 255, 0.3); }
+      50% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.9); }
+      100% { box-shadow: 0 0 0px rgba(255, 255, 255, 0.3); }
     }
   </style>
 </head>
@@ -296,6 +301,30 @@
       nav.classList.toggle("open");
       icon.textContent = nav.classList.contains("open") ? "×" : "☰";
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const steps = document.querySelectorAll('.step');
+      const isMobile = window.innerWidth < 768;
+
+      if (isMobile) {
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2 });
+
+        steps.forEach(step => observer.observe(step));
+      } else {
+        steps.forEach((step, index) => {
+          setTimeout(() => {
+            step.classList.add('visible');
+          }, index * 250);
+        });
+      }
+    });
   </script>
 
 </body>
